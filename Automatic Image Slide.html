@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Image Slider</title>
+</head>
+<body>
+<div class="slider">
+<img src="pic1.avif" class="slider-image" alt="Image 1">
+<button id="prevBtn">Previous</button>
+<button id="nextBtn">Next</button>
+</div>
+<script>
+let images = ["pic1.avif", "pic2.jpg", "pic3.jpg"];
+let currentIndex = 0;
+const imgElement = document.querySelector(".slider-image");
+const nextBtn = document.getElementById("nextBtn");
+const prevBtn = document.getElementById("prevBtn");
+nextBtn.addEventListener("click", () => {
+currentIndex = (currentIndex + 1) % images.length;
+imgElement.src = images[currentIndex];
+});
+prevBtn.addEventListener("click", () => {
+currentIndex = (currentIndex - 1 + images.length) % images.length;
+imgElement.src = images[currentIndex];
+});
+setInterval(() => {
+currentIndex = (currentIndex + 1) % images.length;
+imgElement.src = images[currentIndex];
+}, 2000);
+</script>
+</body>
+</html>
